@@ -9,8 +9,8 @@ nettotal = 0
 avgchange = 0
 
 totalprofit = 0
-totalloss - 0
-nettotal = 0
+totalloss = 0
+changetotal = 0
 profit = 0
 
 
@@ -28,7 +28,7 @@ with open(budgetcsv, 'r') as csvfile:
 
     for row in csvreader:
         totalmonths += 1
-        nettotal = sum(int(row[1])
+        nettotal = nettotal + int(row[1])
         
         profit = int(row[1])
          
@@ -37,12 +37,12 @@ with open(budgetcsv, 'r') as csvfile:
         elif profit < 0:
             totalloss += profit
             
-    nettotal = totalprofit - totalloss
-    avgchange = (nettotal - totalloss)/totalmonths
+    changetotal = totalprofit - totalloss
+    avgchange = changetotal/totalmonths
     maxprofit = 0
-    maxprofit = max(int(row[1]]))
+    # maxprofit = max(int(row[1])
     minprofit = 0
-    minprofit = min(int(row[1]))
+# minprofit = min(int(row[1])
    
 print(totalmonths)
 print(nettotal)
