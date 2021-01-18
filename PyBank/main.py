@@ -30,39 +30,23 @@ with open(budgetcsv, 'r') as csvfile:
         totalmonths += 1
         nettotal = nettotal + int(row[1])
         
-        if int(row[1]) > maxprofit:
-            maxprofit = int(row[1])
+        # if int(row[1]) > maxprofit:
+        #     maxprofit = int(row[1])
         
-        if int(row[1]) < minprofit:
-            minprofit = int(row[1])
+        # if int(row[1]) < minprofit:
+        #     minprofit = int(row[1])
         
         profit.append(int(row[1]))
         
-        # if totalmonths != 1:
-        #     previousrow = int(row[1])
-        #     changetotal = int(previousrow) - int(row[1])
-        
-        # profit = int(row[1])
-         
-        # if profit > 0:
-        #     totalprofit += profit
-        # elif profit < 0:
-        #     totalloss += profit
-    
+            
     for counter in range(len(profit)-1):
         changeprofit.append(int(profit[counter+1]) - int(profit[counter]))
 
-    # changetotal = totalprofit - totalloss
-    # avgchange = changetotal/totalmonths
-    
-    # maxprofit = max(int(row[1])
-    
-# minprofit = min(int(row[1])
    
-print(totalmonths)
-print(nettotal)
-print(sum(changeprofit)/totalmonths)
-print(maxprofit)
-print(minprofit)
-print(max(profit))
-print(min(profit))
+print(f'"Total months : " {totalmonths}')
+print("Total : ", nettotal)
+print(f'"Average change : " {round(sum(changeprofit)/(totalmonths-1)),2}')
+print(f'"Greatest increase in profits : " {max(changeprofit)}')
+print(f'"Greatest decrease in profits : {min(changeprofit)}')
+
+
