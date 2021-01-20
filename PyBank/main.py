@@ -47,18 +47,18 @@ minindex = changeprofit.index(min(changeprofit))
 print("Financial Analysis")
 print("-----------------------------------")
 print(f'Total months : {totalmonths}')
-print("Total : ", "$", nettotal)
-print(f'Average change : ${round(sum(changeprofit)/(totalmonths-1),2)}')
+print(f'Total : , "$", {nettotal}')
+print(f'Average change : , "$", {round(sum(changeprofit)/(totalmonths-1),2)}')
 print(f'Greatest increase in profits : {month[maxindex]} ${max(changeprofit)}')
 print(f'Greatest decrease in profits : {month[minindex]} ${min(changeprofit)}')
 
 # Adopted from class material
 # Specify the file to write to
-outputpath = os.path.join("..", "analysis", "results.csv")
+outputpath = os.path.join("analysis", "results.csv")
 
 # Open the file using "write" mode. Specify the variable to hold the contents
 with open(outputpath, 'w', newline='') as csvfile:
-
+    
     # Initialize csv.writer
     csvwriter = csv.writer(csvfile, delimiter=',')
 
@@ -66,7 +66,7 @@ with open(outputpath, 'w', newline='') as csvfile:
     csvwriter.writerow('Financial Analysis')
     csvwriter.writerow('---------------------------')
     csvwriter.writerow(f'Total months : {totalmonths}')
-    csvwriter.writerow("Total : ", "$", nettotal)
+    # csvwriter.writerow(f'"Total : ", "$", nettotal')
     csvwriter.writerow(f'Average change : ${round(sum(changeprofit)/(totalmonths-1),2)}')
     csvwriter.writerow(f'Greatest increase in profits : {month[maxindex]} ${max(changeprofit)}')
     csvwriter.writerow(f'Greatest decrease in profits : {month[minindex]} ${min(changeprofit)}')
