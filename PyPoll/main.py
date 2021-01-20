@@ -78,7 +78,7 @@ elif Lipercent > Khanpercent and Lipercent > Correypercent and Lipercent > Otool
     Winner = candidates[2]
 elif Otooleypercent > Khanpercent and Otooleypercent > Correypercent and Otooleypercent > Lipercent:
     print(f'Winner : {candidates[3]}')
-    Winner = candidates[2]
+    Winner = candidates[3]
 print("-----------------------------")
 
 
@@ -93,13 +93,14 @@ with open(outputpath, 'w', newline='') as csvfile:
     csvwriter = csv.writer(csvfile, delimiter=',')
 
     # Write the first row (column headers)
-    csvwriter.writerow('Election Results')
-    csvwriter.writerow('\n---------------------------')
-    csvwriter.writerow(f'\nTotal Votes : {totalvotes}')
-    csvwriter.writerow("\n-----------------------------")
-    csvwriter.writerow(f'\n{candidates[0]}' ": ", Khanpercent, Khanvotes)
-    csvwriter.writerow(f'\n{candidates[1]}' " :", Correypercent, Correyvotes)
-    csvwriter.writerow(f'\n{candidates[2]}' " :", Lipercent, Livotes)
-    csvwriter.writerow(f'\n{candidates[3]}' " :", Otooleypercent, OTooleyvotes)
-    csvwriter.writerow("\n-----------------------------")
-    
+    csvwriter.writerow(["Election Results"])
+    csvwriter.writerow(["----------------------------"])
+    csvwriter.writerow(["Total Votes : " + str(totalvotes)])
+    csvwriter.writerow(["-----------------------------"])
+    csvwriter.writerow([str(candidates[0]) + " :" + str(Khanpercent) + "   " + str(Khanvotes)])
+    csvwriter.writerow([str(candidates[1]) + " :" + str(Correypercent) + "   " + str(Correyvotes)])
+    csvwriter.writerow([str(candidates[2]) + " :" + str(Lipercent) + "   " + str(Livotes)])
+    csvwriter.writerow([str(candidates[3]) + " :" + str(Otooleypercent) + "   " + str(OTooleyvotes)])
+    csvwriter.writerow(["-----------------------------"])
+    csvwriter.writerow(["Winner :" + str(Winner)])
+    csvwriter.writerow(["-----------------------------"])
