@@ -10,6 +10,11 @@ nettotal = 0
 changeprofit = []
 profit = []
 month = []
+nettotalformat = 0
+averageformat = 0
+averagechange = 0
+maxformat = 0
+minformat = 0
 
 # Open and read csv
 with open(budgetcsv, 'r') as csvfile:
@@ -44,13 +49,20 @@ maxindex = changeprofit.index(max(changeprofit))
 #  Index of minimum change
 minindex = changeprofit.index(min(changeprofit))
 
+# Format variables with $ sign
+nettotalformat = "${:.0f}".format(nettotal)
+averagechange = sum(changeprofit)/(totalmonths-1)
+averageformat = "${:.2f}".format(averagechange)
+maxformat = "${:.0f}".format(max(changeprofit))
+minformat = "${:.0f}".format(max(changeprofit))
+
 print("Financial Analysis")
 print("-----------------------------------")
 print(f'Total months : {totalmonths}')
-print(f'Total : , "$", {nettotal}')
-print(f'Average change : , "$", {round(sum(changeprofit)/(totalmonths-1),2)}')
-print(f'Greatest increase in profits : {month[maxindex]} ${max(changeprofit)}')
-print(f'Greatest decrease in profits : {month[minindex]} ${min(changeprofit)}')
+print(f'Total : {nettotalformat}')
+print(f'Average change : {averageformat}')
+print(f'Greatest increase in profits : {month[maxindex]} {maxformat}')
+print(f'Greatest decrease in profits : {month[minindex]} {minformat}')
 
 # Adopted from class material
 # Specify the file to write to
@@ -63,11 +75,12 @@ with open(outputpath, 'w', newline='') as csvfile:
     csvwriter = csv.writer(csvfile, delimiter=',')
 
     # Write the first row (column headers)
-    csvwriter.writerow('Financial Analysis')
-    csvwriter.writerow('---------------------------')
-    csvwriter.writerow(f'Total months : {totalmonths}')
-    # csvwriter.writerow(f'"Total : ", "$", nettotal')
-    csvwriter.writerow(f'Average change : ${round(sum(changeprofit)/(totalmonths-1),2)}')
-    csvwriter.writerow(f'Greatest increase in profits : {month[maxindex]} ${max(changeprofit)}')
-    csvwriter.writerow(f'Greatest decrease in profits : {month[minindex]} ${min(changeprofit)}')
+    csvwriter.writerow("Financial Analysis")
+    csvwriter.writerow("---------------------------")
+    # csvwriter.writerow("\nTotal months, Total, Average change, Greatest increase, Greatest decrease")
+    csvwriter.writerow(f'\nTotal months : {totalmonths}')
+    csvwriter.writerow(f'\nTotal : , {nettotalformat}')
+    csvwriter.writerow(f'\nAverage change : {averageformat}')
+    csvwriter.writerow(f'\nGreatest increase in profits : {month[maxindex]} {maxformat}')
+    csvwriter.writerow(f'\nGreatest decrease in profits : {month[minindex]} {minformat}')
 
