@@ -15,7 +15,6 @@ Livotes = 0
 Lipercent = 0
 OTooleyvotes = 0
 Otooleypercent = 0
-Khanrounded = 0
 
 # Open and read csv
 with open(electioncsv, 'r') as csvfile:
@@ -43,11 +42,10 @@ with open(electioncsv, 'r') as csvfile:
 
 
 # Calculate candidate percentage votes
-Khanpercent = round((Khanvotes/totalvotes),2) * 100
-# Khanrounded = round((Khanpercent),3)
-Correypercent = round((Correyvotes/totalvotes),2) * 100
-Lipercent = round((Livotes/totalvotes),2) * 100
-Otooleypercent = round((OTooleyvotes/totalvotes),2) * 100
+Khanpercent = "{:.3%}".format(Khanvotes/totalvotes)
+Correypercent = "{:.3%}".format(Correyvotes/totalvotes)
+Lipercent = "{:.3%}".format(Livotes/totalvotes)
+Otooleypercent = "{:.3%}".format(OTooleyvotes/totalvotes)
 
 
 
